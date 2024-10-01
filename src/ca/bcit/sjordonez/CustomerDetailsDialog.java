@@ -5,17 +5,17 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import net.miginfocom.swing.MigLayout;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
+
+import net.miginfocom.swing.MigLayout;
 
 public class CustomerDetailsDialog extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private CustomerLibrary customerLibrary;
 	private JTextField textField_id;
 	private JTextField textField_firstName;
 	private JTextField textField_lastName;
@@ -30,9 +30,11 @@ public class CustomerDetailsDialog extends JDialog {
 	 * Create the dialog.
 	 */
 	public CustomerDetailsDialog(Customer customer) {
-		this.customerLibrary = CustomerLibrary.getCustomerLibraryInstance();
+		CustomerLibrary.getCustomerLibraryInstance();
 		setSize(600, 450);
 		setLocationRelativeTo(null);
+	    setModalityType(ModalityType.APPLICATION_MODAL);
+	    
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
